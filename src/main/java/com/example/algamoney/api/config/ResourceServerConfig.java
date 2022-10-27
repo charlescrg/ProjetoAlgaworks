@@ -1,3 +1,4 @@
+
 package com.example.algamoney.api.config;
 
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -43,6 +45,13 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
     protected AuthenticationManager authenticationManager() throws Exception {        
         return super.authenticationManager();
     }
+    
+    @Bean
+    @Override
+    protected UserDetailsService userDetailsService() {        
+        return super.userDetailsService();
+    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
